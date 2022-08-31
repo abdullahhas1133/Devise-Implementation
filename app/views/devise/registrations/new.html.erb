@@ -17,6 +17,17 @@
   </div>
 
   <div class="field">
+    <%= f.label :Status %><br />
+    <%= f.text_field :status, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Experience %><br />
+    <%= f.text_field :experience_year, autofocus: true %>
+  </div>
+
+
+  <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
@@ -24,6 +35,8 @@
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
+
+  
 <% end %>
 
 <%= render "devise/shared/links" %>
