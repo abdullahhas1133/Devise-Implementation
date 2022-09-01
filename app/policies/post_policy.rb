@@ -1,15 +1,18 @@
 class PostPolicy < ApplicationPolicy
   
   def edit?
-    current_admin.present?
+    !user.nil?
+  end
+  def update?
+    !user.nil?
+  end
+  def create
+    !user.nil?
   end
   def destroy?
-    current_admin.present?
+    !user.nil?
   end
   def new?
-    current_admin.present?
+    !user.nil?
   end
-
-
-
 end

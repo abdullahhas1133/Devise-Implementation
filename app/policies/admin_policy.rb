@@ -9,7 +9,5 @@ class AdminPolicy < ApplicationPolicy
   def new?
     current_admin.present?
   end
-
-
-
+ 
 end
