@@ -1,9 +1,16 @@
 <% @posts.each do |post|%>
-    <h2><%=post.title%></h2>
-    <div><%=post.body%></div>
+    <h2><%=post.name%></h2>
+    <div><%=post.detail%></div>
     <br>
     <%= link_to "Read Post", post%>
 <% end%>
 
 <br>
+<% if admin_signed_in? %>
 <%= link_to "Add New Post", new_post_path%>
+<%= link_to "Sign out",  destroy_admin_session_path, method: :delete%>
+<% else %>
+<%= link_to "Log In", new_admin_session_path%>
+<%= link_to "Sign Up", new_admin_registration_path%>
+<% end %>
+
