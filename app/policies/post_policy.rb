@@ -3,7 +3,11 @@ class PostPolicy < ApplicationPolicy
     !user.nil?
   end
   def update?
-    !user.nil?
+    if !user.nil?
+      return true if user.id==post.admin_id
+    else
+      return false
+    end
   end
   def create?
     !user.nil?
@@ -17,7 +21,6 @@ class PostPolicy < ApplicationPolicy
   def index?
     return true
   end
-
   private
 
   def post

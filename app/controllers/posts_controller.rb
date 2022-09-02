@@ -12,7 +12,7 @@
   end
   
   def create
-    
+    byebug
     @post = Post.new(post_params)
     authorized
     if @post.save
@@ -53,7 +53,7 @@
   end
 
   def post_params
-    params.require(:post).permit(:name, :detail)
+    params.require(:post).permit(:name, :detail,:admin_id)
   end
 
   def authorized

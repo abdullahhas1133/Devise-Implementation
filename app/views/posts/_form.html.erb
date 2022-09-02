@@ -4,6 +4,8 @@
     <br>
     <%= f.label :detail, "Body" %><br>
     <%= f.text_area :detail %><br>
+    <%= f.hidden_field :admin_id, value: current_admin.id %>
+    <br>
     <br>
     <%= f.submit%>
     
