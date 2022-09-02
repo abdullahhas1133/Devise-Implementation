@@ -1,7 +1,6 @@
-class PostsController < ApplicationController
-  
-  before_action :find_post
-  before_action :authorized, except: %i[index]
+  class PostsController < ApplicationController
+  before_action :find_post, only: %i[show edit update destroy ]
+  before_action :authorized, except: %i[index new create show]
 
   def index
     @posts = Post.all.order("created_at DESC")
@@ -9,10 +8,13 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.new
+    authorized
   end
   
   def create
+    
     @post = Post.new(post_params)
+    authorized
     if @post.save
       redirect_to @post
     else
@@ -21,9 +23,7 @@ class PostsController < ApplicationController
 
   end
 
-  def welcome 
-  
-  end
+  def welcome; end
   def update
    
     if @post.update(post_params)
@@ -38,12 +38,9 @@ class PostsController < ApplicationController
     redirect_to root_path  
   end
 
-  def show   
-    
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   private
 

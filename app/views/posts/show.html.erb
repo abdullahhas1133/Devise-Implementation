@@ -4,6 +4,10 @@
 <p><%= @post.detail%></p>
 </div>
 
-<%= link_to "Edit Post ", edit_post_path(@post)%>
-<%= link_to "Delete Post ", post_path(@post), method: :delete, data: {confirm: "Are you sure?"} %>
+ <% if policy(@post ||Post.new).edit? %>
+      <%= link_to "Edit Post ", edit_post_path(@post)%>
+      <br>
+      <%= link_to "Delete Post ", post_path(@post), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
+
 <%= link_to "All posts ", posts_path%>
